@@ -1,18 +1,27 @@
 import React, { Fragment } from 'react';
 
 
-const BookInfo = () => {
+const BookInfo = ({ selectedBookData }) => {
+  console.log(selectedBookData)
+  
   return (
     <Fragment>
       <h2>Book Details</h2>
       <div className='alert alert-secondary' role='alert'>
-        No  book has been selected yet. Please make a selection!
+        {
+          Object.values(selectedBookData).length > 0 ? (
+            <div>
+              <h4 className='fw-bold'>Title: { selectedBookData.title }</h4>
+              <h5 className='fw-light'>Description: { selectedBookData.description }</h5>
+              <h5 className='fst-italic'>Price: { selectedBookData.price }</h5>
+              <h5 className='fst-italic'>Inserted By: { selectedBookData.username }</h5>
+            </div> 
+
+            ) : 'No  book has been selected yet. Please make a selection!'
+            
+        }
+        
       </div>
-      {/* <div>
-        <p className='fw-bold'>Title:</p>
-        <p className='fw-light'>Description:</p>
-        <p className='fst-italic'>Price:</p>
-      </div> */}
     </Fragment>
   );
 };
